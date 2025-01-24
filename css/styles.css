@@ -136,13 +136,13 @@ body {
 }
 
 @media screen and (min-width: 1440px) {
-	body {
+	/* body {
 		width: 75%;
 	}
 
 	.basicLightbox.basicLightbox--visible {
 		width: 75%;
-	}
+	} */
 	/* .basicLightbox.basicLightbox--visible {
 		top: 0;
 		left: 0;
