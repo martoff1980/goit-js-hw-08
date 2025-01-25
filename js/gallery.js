@@ -65,9 +65,7 @@ const galleryItemsHTML = images
 	})
 	.join('');
 
-gallery.insertAdjacentHTML('beforeend', galleryItemsHTML);
-
-document.addEventListener('DOMContentLoaded', function () {
+function showEnlargeImage() {
 	const galleryItems = document.querySelectorAll('.gallery-item img');
 
 	galleryItems.forEach((item) => {
@@ -86,12 +84,12 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		});
 	});
-});
+}
 
-document.addEventListener('DOMContentLoaded', function () {
+function selectedImage() {
 	const gallery = document.querySelector('.gallery');
 
-	gallery.addEventListener('click', function (event) {
+	function clickImage(event) {
 		// Заборна завантаженню зображення
 		event.preventDefault();
 
@@ -107,10 +105,12 @@ document.addEventListener('DOMContentLoaded', function () {
 			console.log(localStorage.getItem('curentPhoto'));
 			localStorage.removeItem('curentPhoto');
 		}
-	});
-});
+	}
 
-document.addEventListener('DOMContentLoaded', function () {
+	gallery.addEventListener('click', clickImage);
+}
+
+function modalWindow() {
 	const galleryItems = document.querySelectorAll('.gallery-item a');
 	const hero = document.querySelector('.hero');
 	let currentIndex = 0;
@@ -132,25 +132,31 @@ document.addEventListener('DOMContentLoaded', function () {
         `,
 			{
 				onShow: (instance) => {
-					instance.element().querySelector('.modal-close').onclick = () => {
+					const modalClose = instance.element().querySelector('.modal-close');
+					const modalPrev = instance.element().querySelector('.modal-prev');
+					const modalNext = instance.element().querySelector('.modal-next');
+					const modalClickWindow = instance.element();
+
+					modalClose.onclick = () => {
 						hero.classList.remove('modal-open');
 						instance.close();
 					};
 
-					instance.element().querySelector('.modal-prev').onclick = (e) => {
+					modalPrev.onclick = (e) => {
 						currentIndex = currentIndex > 0 ? currentIndex - 1 : galleryItems.length - 1;
 						createCircle(e.clientX, e.clientY, instance.element());
 						updateImage(currentIndex, instance.element());
 					};
 
-					instance.element().querySelector('.modal-next').onclick = (e) => {
+					modalNext.onclick = (e) => {
 						currentIndex = currentIndex < galleryItems.length - 1 ? currentIndex + 1 : 0;
 						createCircle(e.clientX, e.clientY, instance.element());
 						updateImage(currentIndex, instance.element());
 					};
 
 					// клік тільки на модальне вікно
-					instance.element().onclick = (e) => {
+					// код демонструє варіативність basicLightbox
+					modalClickWindow.onclick = (e) => {
 						if (e.target.classList[0] === 'modal-window') {
 							createCircle(e.clientX, e.clientY, instance.element());
 							setTimeout(() => {
@@ -174,6 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	});
 
+	//Функція візуалізацїї клику
 	function createCircle(x, y, container) {
 		const circle = document.createElement('div');
 		circle.className = 'circle';
@@ -192,9 +199,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Функція оновлення зображення
 	function updateImage(index, container) {
-		console.log(index);
-		console.log(container);
-		console.log(galleryItems[index].querySelector('img').src);
 		container.querySelector('img').src = galleryItems[index].querySelector('img').src;
 	}
-});
+}
+
+gallery.insertAdjacentHTML('beforeend', galleryItemsHTML);
+document.addEventListener('DOMContentLoaded', showEnlargeImage);
+document.addEventListener('DOMContentLoaded', selectedImage);
+document.addEventListener('DOMContentLoaded', modalWindow);
