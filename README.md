@@ -21,4 +21,4 @@
 
 ## Валідація
 
--[Валідатор](http://validator.w3.org/nu/).
+- [validator.w3](http://validator.w3.org/nu/).
