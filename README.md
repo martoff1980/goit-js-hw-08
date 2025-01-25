@@ -8,7 +8,7 @@
 
 ## Структура проекту
 
-Структура вкладеності вказана на ![схемі](./images/scheme.png) або [тут] (https://s3.eu-north-1.amazonaws.com/lms.goit.files/707badf5-368a-42fc-82f2-b156ede5dfe28.png).
+Структура вкладеності вказана на ![схемі](./images/scheme.png) або [тут](https://s3.eu-north-1.amazonaws.com/lms.goit.files/707badf5-368a-42fc-82f2-b156ede5dfe28.png).
 
 ## Бібліотека та Сервіси
 
