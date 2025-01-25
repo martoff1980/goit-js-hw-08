@@ -1,0 +1,136 @@
+/** @format */
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 16px;
+	width: 1440px;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: #fafafa;
+	color: #212121;
+	line-height: 1.5;
+}
+
+.hero {
+	display: flex;
+}
+
+.gallery {
+	display: flex;
+	width: 1128px;
+	margin: 24px 156px;
+	flex-wrap: wrap;
+	gap: 24px;
+	align-items: center;
+	list-style: none;
+	padding: 0;
+}
+
+.gallery-item {
+	margin: 0px;
+	flex-basis: calc((100% - 2 * 24px) / 3);
+}
+
+.gallery-item img {
+	display: block;
+	width: 100%;
+	height: 200px;
+	transition: transform 0.5s ease;
+}
+
+.gallery-item img.enlarge {
+	transform: scale(1.04);
+}
+
+.hero.modal-open {
+	opacity: 0.2;
+}
+
+.modal-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-window {
+	position: absolute;
+	width: 1440px;
+	height: 696px;
+	border-radius: 4px;
+	background: transparent;
+}
+
+.modal-window img {
+	position: absolute;
+	width: 1112px;
+	height: 640px;
+	top: 28px;
+	left: 164px;
+	right: 164px;
+	bottom: 28px;
+}
+
+.modal-button {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	font-size: 32px;
+	font-weight: 600;
+	border: none;
+	background-color: transparent;
+}
+
+.modal-close {
+	right: 2%;
+}
+
+.modal-info {
+	width: 40px;
+	left: 1%;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.modal-prev {
+	top: 50%;
+	left: 1%;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border: none;
+}
+
+.modal-next {
+	top: 50%;
+	right: 1%;
+}
+
+.modal-button:hover {
+	border: none;
+	background-color: transparent;
+}
+
+.basicLightbox.basicLightbox--visible {
+	width: 1440px;
+	height: 696px;
+	top: 3%;
+	left: -0.5%;
+	opacity: 1;
+	background-color: transparent;
+	transition: opacity 1s cubic-bezier(0.8, 0, 0.2, 1), visibility 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.circle {
+	position: absolute;
+	border-radius: 50%;
+	pointer-events: none;
+}
